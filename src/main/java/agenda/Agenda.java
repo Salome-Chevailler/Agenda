@@ -12,9 +12,11 @@ public class Agenda {
      *
      * @param e the event to add
      */
+    private final HashSet<Event> myEvents = new HashSet<>();
+    
     public void addEvent(Event e) {
         // TODO : implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        myEvents.add(e);
     }
 
     /**
@@ -25,6 +27,16 @@ public class Agenda {
      */
     public List<Event> eventsInDay(LocalDate day) {
         // TODO : implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        List<Event> resultat = new ArrayList<>();
+        
+        myEvents.forEach((e) -> {
+           if (e.isInDay(day)){
+               resultat.add(e);   
+           } 
+           
+        });
+        return resultat;
+        
     }
 }
+    
