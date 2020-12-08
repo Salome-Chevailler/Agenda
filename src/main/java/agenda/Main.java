@@ -35,7 +35,7 @@ public class Main {
         
         System.out.println(e.isInDay(LocalDate.now()));
         System.out.println(eToday.isInDay(LocalDate.now()));
-        System.out.println(monAgenda.eventsInDay(LocalDate.now()));
+        //System.out.println(monAgenda.eventsInDay(LocalDate.now()));
         
         
     }
