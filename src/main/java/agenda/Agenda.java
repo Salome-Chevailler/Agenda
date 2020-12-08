@@ -38,6 +38,7 @@ public class Agenda {
                 resultat.add(e);
             }
         }
+        
         return resultat;
         
     }
