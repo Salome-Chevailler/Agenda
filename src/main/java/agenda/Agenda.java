@@ -12,11 +12,11 @@ public class Agenda {
      *
      * @param e the event to add
      */
-    private final HashSet<Event> myEvents = new HashSet<>();
+    private List<Event> myEvents = new LinkedList<>();
     
     public void addEvent(Event e) {
         // TODO : implémenter cette méthode
-        myEvents.add(e);
+        this.myEvents.add(e);
     }
 
     /**
@@ -25,16 +25,19 @@ public class Agenda {
      * @param day the day toi test
      * @return and iteraror to the events that occur on that day
      */
-    public List<Event> eventsInDay(LocalDate day) {
+    public List<Event> eventsInDay(LocalDate day) throws Exception {
         // TODO : implémenter cette méthode
-        List<Event> resultat = new ArrayList<>();
+        if(this.myEvents.isEmpty()){
+            throw new Exception("Pas d'evenement dans cet Agenda");
+        }
         
-        myEvents.forEach((e) -> {
-           if (e.isInDay(day)){
-               resultat.add(e);   
-           } 
-           
-        });
+        List<Event> resultat = new LinkedList<>();
+        
+        for ( Event e : myEvents){
+            if (e.isInDay(day)){
+                resultat.add(e);
+            }
+        }
         return resultat;
         
     }
