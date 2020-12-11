@@ -20,6 +20,15 @@ public class AgendaTest {
 
     // November 1st, 2020, 22:30
     LocalDateTime nov_1__2020_22_30 = LocalDateTime.of(2020, 11, 1, 22, 30);
+    
+    // November 1st, 2020, 21:00
+    LocalDateTime nov_1_2020_21_00 = LocalDateTime.of(2020, 11, 1, 21, 00);
+    
+    // November 1st, 2020, 23:00
+    LocalDateTime nov_1_2020_12_00 = LocalDateTime.of(2020, 11, 1, 12, 00);
+    
+    // November 2nd, 2020, 11:00
+    LocalDateTime nov_2_2020_11_00 = LocalDateTime.of(2020, 11, 2, 11, 00);
 
     // 120 minutes
     Duration min_120 = Duration.ofMinutes(120);
@@ -27,8 +36,11 @@ public class AgendaTest {
     // A simple event
     // November 1st, 2020, 22:30, 120 minutes
     Event simple = new Event("Simple event", nov_1__2020_22_30, min_120);
-
-    // A Weekly Repetitive event ending at a given date
+    Event simple2 = new Event("Simple event", nov_2_2020_11_00, min_120);
+    Event simple3 = new Event("Simple event", nov_1_2020_21_00, min_120);
+    Event simple4 = new Event("Simple event", nov_1_2020_12_00, min_120);
+    
+// A Weekly Repetitive event ending at a given date
     RepetitiveEvent fixedTermination = new FixedTerminationEvent("Fixed termination weekly", nov_1__2020_22_30, min_120, ChronoUnit.WEEKS, jan_5_2021);
 
     // A Weekly Repetitive event ending after a give number of occurrrences
@@ -53,5 +65,18 @@ public class AgendaTest {
         assertTrue(agenda.eventsInDay(nov_1_2020).contains(neverEnding));
     }
 
+    @Test
+    public void testFindByTitle() throws Exception {
+        assertEquals(1, agenda.findByTitle("Simple event").size());
+        agenda.addEvent(simple2);
+        assertEquals(2, agenda.findByTitle("Simple event").size());
+    }
+    
+    @Test 
+    public void testIsFreeFor() throws Exception {
+        assertTrue(agenda.isFreeFor(simple2));
+        assertFalse(agenda.isFreeFor(simple3));
+        assertTrue(agenda.isFreeFor(simple4));
+    }
 
 }
