@@ -22,7 +22,7 @@ public class RepetitiveEvent extends Event {
      * </UL>
      */
     
-    private ChronoUnit frequency;
+    public ChronoUnit frequency;
     List<LocalDate> lesExceptions = new ArrayList<>();
     
     public RepetitiveEvent(String title, LocalDateTime start, Duration duration, ChronoUnit frequency) {

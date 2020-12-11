@@ -92,9 +92,9 @@ public class FixedTerminationEvent extends RepetitiveEvent {
             }
 
             if (this.terminationInclusive != null) {
-                if (this.terminationInclusive.isAfter(aDay) || this.terminationInclusive.isEqual(aDay)) {
+                if ((this.terminationInclusive.isAfter(aDay)) || (this.terminationInclusive.isEqual(aDay)) || (this.getStart().plus(this.numberOfOccurrences, this.frequency).toLocalDate().isAfter(aDay)) || (this.getStart().plus(this.numberOfOccurrences, this.frequency).toLocalDate().isEqual(aDay))) {
 
-                    while (myStart.toLocalDate().isBefore(aDay)) {
+                    while (myStart.toLocalDate().isBefore(aDay) || myStart.toLocalDate().isEqual(aDay)) {
                         myEnd = myStart.plus(myDuration);
                         if (myStart.toLocalDate().isBefore(aDay) || myStart.toLocalDate().isEqual(aDay)) {
                             if (myEnd.toLocalDate().isAfter(aDay) || myEnd.toLocalDate().isEqual(aDay)) {
@@ -106,18 +106,19 @@ public class FixedTerminationEvent extends RepetitiveEvent {
                     }
                 }
             } else {
-                if (myStart.plus(this.numberOfOccurrences, this.frequency).toLocalDate().isAfter(aDay) || myStart.plus(this.numberOfOccurrences, this.frequency).toLocalDate().isEqual(aDay));
-                while (myStart.toLocalDate().isBefore(aDay) || myStart.toLocalDate().isEqual(aDay)) {
-                    if (myStart.toLocalDate().isBefore(aDay) || myStart.toLocalDate().isEqual(aDay)) {
-                        if (myEnd.toLocalDate().isAfter(aDay) || myEnd.toLocalDate().isEqual(aDay)) {
-                            return true;
+                if (this.getStart().plus(this.numberOfOccurrences, this.frequency).toLocalDate().isAfter(aDay) || this.getStart().plus(this.numberOfOccurrences, this.frequency).toLocalDate().isEqual(aDay)) {
+                    while (myStart.toLocalDate().isBefore(aDay) || myStart.toLocalDate().isEqual(aDay)) {
+                        myEnd = myStart.plus(myDuration);
+                        if (myStart.toLocalDate().isBefore(aDay) || myStart.toLocalDate().isEqual(aDay)) {
+                            if (myEnd.toLocalDate().isAfter(aDay) || myEnd.toLocalDate().isEqual(aDay)) {
+                                return true;
+                            }
                         }
+                        myStart = myStart.plus(1, frequency);
                     }
                 }
-
-                
-
             }
+            
         }
         return r;
     }
