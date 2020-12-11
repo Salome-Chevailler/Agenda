@@ -92,7 +92,7 @@ public class FixedTerminationEvent extends RepetitiveEvent {
             }
 
             if (this.terminationInclusive != null) {
-                if ((myStart.plus(numberOfOccurrences)).LocalDate().isAfter(aDay) || (myStart.plus(numberOfOccurrences)).LocalDate().isEqual(aDay)) {
+                if (this.terminationInclusive.isAfter(aDay) || this.terminationInclusive.isEqual(aDay)) {
 
                     while (myStart.toLocalDate().isBefore(aDay)) {
                         myEnd = myStart.plus(myDuration);
@@ -115,7 +115,10 @@ public class FixedTerminationEvent extends RepetitiveEvent {
                     }
                 }
 
-                return r;
+                
 
             }
         }
+        return r;
+    }
+}
