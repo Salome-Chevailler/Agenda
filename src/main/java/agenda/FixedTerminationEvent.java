@@ -74,6 +74,7 @@ public class FixedTerminationEvent extends RepetitiveEvent {
         lesExceptions.add(date);
     }
 
+    @Override
     public boolean isInDay(LocalDate aDay) {
         LocalDateTime myStart = this.getStart();
         Duration myDuration = this.getDuration();
