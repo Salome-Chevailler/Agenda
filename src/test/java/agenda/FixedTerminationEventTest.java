@@ -30,13 +30,13 @@ public class FixedTerminationEventTest {
     
     @Test
     public void canCalculateNumberOfOccurrencesFromTerminationDate() {
-        assertEquals(10, fixedTermination.getNumberOfOccurrences(), "Cet événement doits se répéter 10 fois");
+        assertEquals(10, fixedRepetitions.getNumberOfOccurrences(), "Cet événement doits se répéter 10 fois");
     }
 
     @Test
     public void canCalculateTerminationDateFromNumberOfOccurrences() {
-        LocalDate termination = LocalDate.of(2021,1, 3);
-        assertEquals(termination, fixedRepetitions.getTerminationDate(), "Cet événement doits se terminer le 3 janvier");
+        LocalDate termination = LocalDate.of(2021,1, 5);
+        assertEquals(termination, fixedTermination.getTerminationDate(), "Cet événement doits se terminer le 3 janvier");
     }
     
     @Test

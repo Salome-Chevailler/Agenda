@@ -65,14 +65,8 @@ public class RepetitiveEvent extends Event {
             myEnd = myStart.plus(myDuration);
             if (myStart.toLocalDate().isBefore(aDay) || myStart.toLocalDate().isEqual(aDay)){
                 if (myEnd.toLocalDate().isAfter(aDay) || myEnd.toLocalDate().isEqual(aDay)){
-                    return true;
+                    r = true;
                 }
-                else {
-                    r = false;
-                }
-            }
-            else {
-                r = false;
             }
         myStart = myStart.plus(1, frequency);
         }

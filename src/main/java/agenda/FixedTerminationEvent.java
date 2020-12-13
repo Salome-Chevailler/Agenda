@@ -98,7 +98,7 @@ public class FixedTerminationEvent extends RepetitiveEvent {
                         myEnd = myStart.plus(myDuration);
                         if (myStart.toLocalDate().isBefore(aDay) || myStart.toLocalDate().isEqual(aDay)) {
                             if (myEnd.toLocalDate().isAfter(aDay) || myEnd.toLocalDate().isEqual(aDay)) {
-                                return true;
+                                r = true;
                             }
 
                         }
@@ -111,7 +111,7 @@ public class FixedTerminationEvent extends RepetitiveEvent {
                         myEnd = myStart.plus(myDuration);
                         if (myStart.toLocalDate().isBefore(aDay) || myStart.toLocalDate().isEqual(aDay)) {
                             if (myEnd.toLocalDate().isAfter(aDay) || myEnd.toLocalDate().isEqual(aDay)) {
-                                return true;
+                                r = true;
                             }
                         }
                         myStart = myStart.plus(1, frequency);
